@@ -1,0 +1,24 @@
+The goal is to implement a program capable of calculating the word count for a provided file. The name of the file is given in the form of a single command- line argument. The calculated word count should be written to standard output.
+
+In case of invalid number of command-line arguments, the program should print the following string to standard output: "Argument Error". In case of problems encountered when opening (e.g. the file does not exist, insufficient access rights, etc.) or reading the file, the program should output the following string: "File Error"
+
+Following rules must be observed when processing input and formatting output:
+
+In the context of this task, line breaks, tabulators and spaces (i.e. '\n', '\t' and ' ') are considered white-space characters, all other characters are considered printable. You can assume that the character '\r' will not appear anywhere in the text.
+A word is defined in this context as any sequence of non-whitespace characters that is surrounded by at least one whitespace character (or the beginning/end of the file) on both sides.
+The standard output will consist of a single line with the integer corresponding to the number of words in the input file. It is safe to assume that the word count of the input file is always less than 2 billions [2 000 000 000].
+Example 1:
+
+$>program.exe plain.txt
+Input file plain.txt
+
+If a train station is where the train stops, what is a work station?
+std. output
+
+14
+Example 2:
+
+$>program.exe
+std. output
+
+Argument Error

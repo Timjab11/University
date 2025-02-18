@@ -1,0 +1,48 @@
+This week, you will try to write a program that creates a two-dimensional canvas/grid/image on which turtles will move and draw. The user of the application will control how the turtles move using commands and will also give them commands on when to draw "pixels" on the canvas.
+
+The program should work as follows:
+
+Read Input:
+
+Read two numbers separated by a space from the input: the number of rows (rows) and the number of columns (cols) for the canvas.
+Create a 2D canvas (array) of characters with dimensions rows x cols.
+Initialize all characters on the grid to the character . (dot).
+Create a turtle at position (0, 0) - the top-left corner of the grid.
+The turtle initially faces to the right.
+Turtle Properties:
+
+Each turtle has its own position (row, col) and a direction it's currently facing (right, left, up, or down).
+The first coordinate specifies the row, and the second specifies the column (rows increase downwards, columns increase to the right).
+Processing Commands:
+
+Read commands from the program input one by one. Commands are separated by whitespace (space or newline).
+Perform the following actions based on the command:
+r: Turn all turtles to the right.
+l: Turn all turtles to the left.
+m: Move all turtles one position in their current direction:
+If facing right, move from (r, c) to (r, c + 1).
+If facing left, move from (r, c) to (r, c - 1).
+If facing up, move from (r, c) to (r - 1, c).
+If facing down, move from (r, c) to (r + 1, c).
+If any turtle tries to move off the canvas (e.g., moving left from (0, 0)), it "teleports" to the opposite side of the grid:
+In a 3x3 grid:
+python-repl
+Copy
+Edit
+z..
+...
+...
+If the turtle at (0, 0) moves left, it wraps around to (0, 2) (far right on the top row).
+If the turtle at (0, 0) moves up, it wraps around to (2, 0) (bottom-left corner).
+o: Draw a pixel (o) at each turtle's current position.
+If a pixel (o) is already present at that spot, erase it by writing a dot (.) instead. In other words, drawing on a spot that already has a pixel will "erase" that pixel.
+If multiple turtles are at the same position, drawing happens sequentially:
+If two turtles are on the same spot, their drawing cancels out.
+If three turtles are on the same spot, the pixel is drawn again.
+f: A new parallel universe is created, spawning one new turtle.
+The new turtle is placed at position (0, 0) and faces to the right.
+All subsequent commands (o, m, l, r) will also apply to this new turtle.
+All turtles share the same canvas.
+To avoid breaking the multiverse, the maximum number of turtles is three. If there are already three turtles, this command is ignored.
+x: Print the canvas to the program's output and end the program.
+You can assume that the input will always end with the x command.

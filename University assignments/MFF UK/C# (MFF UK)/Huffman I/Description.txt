@@ -1,0 +1,24 @@
+The goal is to write a program capable of constructing and printing a Huffman tree for a specific file. The program will receive the name of the file in the form of a single command-line argument, read all data from the input file and build the Huffman tree for this file. The program will then print out the Huffman tree in prefix notation to the standard output. If the program does not receive exactly one argument, the following string should be printed out to standard output: "Argument Error" In case of problems encountered when opening (e.g. the file does not exist, insufficient access rights) or reading the file, the program should output the following string to standard output: "File Error" The input file can have any format (i.e. it can be a binary file). Clarification: In the context of this assignment, a character is understood to be a symbol representing a certain valuation of a single byte. (i.e. it is better to think about the data as a byte sequence rather than text)
+
+A Huffman tree is a binary tree whose leaf nodes contain all characters present in the input file at least once. The weight of a character refers to the number of occurrences of this character in the input file. For example, the data "xxyz" contain characters "x", "y" and "z", with "x" having the weight of 2 and both "y" and "z" having the weight of 1. Inner nodes of the tree do not contain any characters and their weight is defined as the sum of the weights of both their child nodes (inner nodes always have two child nodes).
+
+A following algorithm is used when building the tree. First, prepare all leaf nodes based on the frequency analysis of the input data and organize them in a forest of single-node trees. As long as the forest contains more than one tree, always remove two nodes with the lowest weight and add them as children of a newly-created node (the weight of which is the sum of the weights of the two nodes), then add this node to the forest. When adding the child nodes, keep in mind that the node with lower weight (or more generally, the lighter node, the node with higher priority) is always the left child. If two nodes have the same weight, following rules are applied (in this order) to determine which node has priority (these rules also determine which node should be on the left and which on the right for nodes with the same weight):
+
+leaf nodes are lighter than inner nodes
+among leaf nodes, those with lower-valued character have priority
+among inner nodes, those that were created sooner by the algorithm have priority
+The resulting tree should be printed out to standard output in the prefix notation. Leaf nodes should be printed in the format *SYMBOL:WEIGHT, where SYMBOL is the decimal numeric code of the corresponding character (i.e. number between 0 and 255) and weight is the number of occurrences of this character in the input file (also in decimals). The inner nodes should be printed out in the format WEIGHT LEFT RIGHT, where weight is again a decimal integer and LEFT and RIGHT is a recursive print of the left, respectively right subtree, with a single space between all parts of the output. If the input file is 0 bytes long, the program should not print anything to standard output.
+
+Important: Your program should be capable of working with file sizes of at least 1 TB (or rather 1 TiB, to be precise) without any problems. However, only O(1) memory is available.
+
+Example:
+
+$>program.exe simple.in
+
+
+**simple.in**
+    aaabbc
+
+
+_standard output_
+    6 *97:3 3 *99:1 *98:2

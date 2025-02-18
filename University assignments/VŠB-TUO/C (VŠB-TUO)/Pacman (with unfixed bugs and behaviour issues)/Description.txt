@@ -1,0 +1,8 @@
+Uses sdl to draw a map based on text input.
+It will create 1 pac-man and variable amount of ghosts, which use basic AI (moving in direction of the player)
+camera follows you around on larger maps, you can try for a highscore written in a textfile which will update if reached.
+Pacman can also eat ghosts if he gets a larger point but it is bugged out the same goes for the Ghost movement, the project was for me more about learning SDL more 
+thoroughly rather than making a full game, had thoughts about implementing a complex pathfinding system, but I still had frustrations with some aspects of C, 
+that i didnt want to force myself into without any paybacks, I will rather write it in C# so that it is more enjoyable.
+
+Also not every file was used, after some frustrations of SDL not working properly and working with C i gave up on organization as it wasnt really neccesary for a personal University project where it is a short term work with no additions of organizing in the assignment.

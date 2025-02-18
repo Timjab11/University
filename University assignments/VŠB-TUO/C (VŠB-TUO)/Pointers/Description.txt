@@ -1,0 +1,53 @@
+The program should behave as follows:
+
+Read a character from the input that will indicate whether to draw a horizontal histogram (if the character is h) or a vertical histogram (if the character is v).
+
+If any other character is entered, print the line Neplatny mod vykresleni (Invalid rendering mode) to standard output and terminate the program with an error code of 1 (as specified in the script).
+Read two non-negative numbers from the input (n and m):
+
+n indicates how many numbers the program will read to calculate the histogram.
+m specifies the range of numbers for which the histogram should be calculated. This range will be the interval [m, m + 8].
+For example, if m is 5, the histogram will count occurrences of numbers from 5 to 13 (inclusive).
+Read n integers from the user, separated by spaces, and calculate a histogram for them.
+
+If a number is outside the interval [m, m + 8], consider it invalid. The program should keep track of the count of invalid numbers.
+The histogram counts how many times each value from m to m + 8 appears in the input.
+Represent the histogram using an array.
+The ideal solution for calculating the histogram is not to use 9 separate if branches. Consider how to calculate the histogram in a single line without conditions.
+If the input character was h, draw a horizontal histogram:
+
+Print numbers from m to m + 8, each on a new line.
+Align the numbers to the right so that the occurrence counts for each number (as shown below) always start in the same column.
+For example, if m=98, then m+8=106, which has more digits than 98. Therefore, add a space before 98 and 99 to ensure the numbers align correctly.
+Example (in this example, underscores represent spaces, but in your program, use actual spaces):
+nginx
+Copy
+Edit
+_98 ##
+_99 #
+100
+101 ###
+...
+If a number occurred in the input, print a space after the number followed by the character # repeated as many times as the number appeared.
+If there were any invalid numbers in the input, print another line after the last row of the histogram with the text invalid: followed by the character # repeated as many times as there were invalid numbers.
+Bonus: If the input character was v, draw a vertical histogram:
+
+Print the numbers from m to m + 8 side by side.
+If a number occurred in the input, draw a column of # symbols above it, with a height equal to the number of times it appeared.
+For vertical histograms, assume that the number range will always be [1, 9].
+Print invalid numbers in the first column, labeled with an i.
+The vertical histogram is a bonus because it is more challenging to implement than the horizontal one.
+If you don't implement the bonus, assume that the input will always start with h. However, you must still read the character for the tests to work.
+Notes:
+
+Do not use dynamic memory allocation for this task. Solve everything using pointers and static arrays. Do not use VLA (Variable-Length Arrays) either:
+c
+Copy
+Edit
+int size = ...;
+// Array on the stack with non-constant size (VLA). Do not use this C99 feature.
+int array[size];
+Consider where to store the count of invalid values (i.e., values outside the given range). Do you need a separate memory space for this, or can you use the histogram itself? :)
+The assignment uses short variable names (e.g., n). In your program, name variables clearly to indicate their purpose. Variable names don't have to match the assignment exactly.
+Name variables clearly to make their purpose immediately recognizable. Create variables as close as possible to where they are needed (not all at the beginning of the function).
+Split the program into functions in a logical way (e.g., a function for reading the histogram, a function for drawing the histogram).

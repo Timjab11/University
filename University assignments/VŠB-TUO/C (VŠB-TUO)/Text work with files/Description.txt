@@ -1,0 +1,52 @@
+The program should behave as follows:
+
+The program will read two mandatory parameters and two optional parameters ("flags") from the command line arguments:
+The first mandatory parameter contains the path to the input file (input-path)
+The second mandatory parameter contains the text to search for (needle)
+The optional parameter -i specifies that the search should be case insensitive
+The optional parameter -o <output> specifies that the found lines should be written to the file <output> instead of the standard output
+Rules for parsing parameters:
+
+Each optional parameter can appear only once. If it appears more than once, print an error message (see tests) and exit the program with code 1.
+The -o parameter must be followed by the path to the output file. If the path is missing, print an error message (see tests) and exit the program with code 1.
+The path to the input file must be specified. If it is missing, print an error message (see tests) and exit the program with code 1.
+The search text (needle) must be specified. If it is missing, print an error message (see tests) and exit the program with code 1.
+If more than two (mandatory) parameters are provided, print an error message (see tests) and exit the program with code 1.
+Mandatory and optional parameters can appear in any order! Always interpret the first mandatory parameter as the path to the input file, and the second mandatory parameter as the search text.
+Examples of correct parameters:
+
+shell
+Copy
+Edit
+$ ./program input.txt foo  
+$ ./program input.txt -i foo  
+$ ./program -o out.txt in.txt bar  
+$ ./program input.txt -i baz -o output.txt  
+Examples of incorrect parameters:
+
+shell
+Copy
+Edit
+$ ./program  
+$ ./program foo  
+$ ./program foo -i -o out.txt  
+$ ./program -i  
+$ ./program foo bar baz  
+$ ./program -i foo bar -i  
+$ ./program -o out.txt foo -o out.txt bar  
+$ ./program foo bar -o  
+More examples can be found in the tests.
+
+The program will read lines from the file specified by input-path.
+You can assume that the input file will always exist, so you don't need to handle file opening errors.
+Each line will have a maximum of 100 characters (including the newline character).
+If the line contains the string needle, print the entire line to the standard output (if the optional parameter -o was not provided) or to the file specified by the -o parameter.
+If the -i parameter was provided, ignore case when checking for the occurrence of the string (treat x and X as the same character).
+Do not open the output file repeatedly. If you need to write found lines to a file, open the file once at the start of the program and close it just before the program ends.
+Notes
+
+The use of Variable-Length Arrays (VLA) is prohibited.
+You will encounter memory errors when working with strings. Use Address Sanitizer or Valgrind!
+Using the VSCode debugger will be very useful when solving this task.
+Even when debugging/stepping through the program, you can redirect input from a file to avoid manually typing the input repeatedly.
+Length of the reference solution: ~140 lines (without bonus)

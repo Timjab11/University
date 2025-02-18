@@ -1,0 +1,36 @@
+This week, you will try to write a program that performs text manipulation. The program will read a set of lines with words, "normalize" each word from the input, and then print a line with the normalized words, along with simple statistics.
+
+The program should behave as follows:
+
+The program will read a number n from the input, indicating how many lines with words will follow.
+
+The line containing n will have a maximum of 50 characters (including the newline character).
+The program will then read n lines from the input.
+
+Each line will contain a maximum of 50 characters (including the newline character).
+How much memory do you need to have in the program to read a string with up to 50 characters?
+
+The lines will contain words separated by spaces. There may be any number of spaces at the beginning of the line, at the end of the line, or between words, but there will always be at least one space between two words.
+Each word will consist of only lowercase and uppercase English alphabetic characters (a-z, A-Z). The word will not contain any spaces.
+For each line, print its normalized version (see below), as well as simple statistics:
+
+How many lowercase English alphabetic characters were in the original line and how many are in the normalized line.
+How many uppercase English alphabetic characters were in the original line and how many are in the normalized line.
+How many spaces were in the original line and how many are in the normalized line.
+Print a blank line between each pair of lines with statistics (see the tests).
+
+Normalized Line
+A normalized line contains all the words from the original line in the same order, but it must follow these rules:
+
+It contains no spaces at the beginning or at the end.
+There is exactly one space between each pair of words.
+Each word is normalized.
+Normalized Word
+A normalized word follows these rules:
+
+If the original word had at least one uppercase letter, the normalized word will have the first character in uppercase and all the other characters in lowercase (e.g., xBc -> Xbc, ABC -> Abc).
+If the original word had no uppercase letters, the normalized word will have all characters in uppercase (e.g., xbc -> XBC, abc -> ABC).
+Additionally, if, after applying the above normalization, there are consecutive identical characters in the word, only the first character in the sequence is kept:
+xxx -> X
+xXx -> Xx
+aabcc -> ABC

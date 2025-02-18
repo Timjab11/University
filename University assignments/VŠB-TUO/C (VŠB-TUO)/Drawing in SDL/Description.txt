@@ -1,0 +1,35 @@
+Assignment
+Create several functions (described below) that will be called in the main function. Add parameters to the functions so that the shapes can be drawn in different sizes depending on the arguments passed to the functions.
+
+For drawing, use the draw_pixel function (to draw a "pixel") combined with set_xxx_color.
+
+Dashed Line
+Write a function that draws a dashed line with a length specified as a parameter.
+
+The line should always consist of a filled colored "pixel" followed by an empty space, then another pixel, then an empty space, and so on.
+The given length will indicate the number of filled pixels.
+Stairs
+Write a function that draws "stairs," which alternate between horizontal and vertical lines.
+
+The parameter of the function will be the number of steps.
+Drawing a Flower
+Write a function that draws a flower with dimensions specified by two parameters:
+
+The number of pixels that will be occupied by the flower's width.
+The number of pixels that will be occupied by the plant's height.
+The flower should be drawn at the current cursor position.
+You can decide how the flower looks (e.g., a sunflower or a rose), but try to always add a green stem that runs down the center of the flower's lower part.
+Be creative! :)
+Drawing a Meadow
+Write a function that draws a meadow containing a specified number of rows and columns of flowers.
+
+The number of rows and columns will be given as parameters.
+Arrange the flowers in a grid, leaving spaces between the rows and columns.
+When creating this function, use the flower-drawing function from the previous task!
+Animation
+Use the animate function to create an animated drawing effect.
+
+This function pauses your program for a short moment. Therefore, if you draw something, then pause the program, draw something else, pause again, and so on (in a loop), you will see an animation.
+If you clear the screen after pausing, you can draw moving shapes.
+For example, you could animate the drawing of the stairs or the meadow.
+Try to come up with an interesting animation and draw it.

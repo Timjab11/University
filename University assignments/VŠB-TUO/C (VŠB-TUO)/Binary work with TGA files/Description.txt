@@ -1,0 +1,46 @@
+This week, you will try to write a program that generates meme images in the TGA format. The program will receive the path to an input TGA image, the path to a folder with the font, and the text to be added to the image. The program will then render the specified text onto the image and save the result to the disk.
+
+You have an archive with helper files available, which includes several TGA images for testing, as well as a folder with a sample font. If you want, you can locally generate TGA images of letters for your own font using the file gen.sh.
+
+The program should behave as follows:
+
+The program will read three parameters from the command line arguments (in this order):
+
+Path to the input TGA file (input)
+Path to the output TGA file (output)
+Path to the folder with fonts (fonts)
+For example:
+
+shell
+Copy
+Edit
+$ ./meme-generator img1.tga out.tga font
+If the program does not receive all three parameters, print the line "Wrong parameters" and exit the program with code 1.
+The program will load the input TGA file from the input parameter. If an error occurs while loading, print the line "Could not load image" and exit the program with code 1.
+
+The program will load from the fonts folder (fonts) 26 TGA images, one for each uppercase English alphabet letter. The files are named A.tga, B.tga, C.tga, etc. (see the font folder in the template). If an error occurs while loading the font images, the program should exit with code 1.
+
+Next, the program will read from the standard input a line containing two numbers separated by a space: top and bottom. Top indicates how many lines of text should be drawn at the top of the image, while bottom specifies how many lines should be drawn at the bottom. The program will then read top + bottom lines of text from the input, which will be sequentially rendered onto the input TGA image. An example can be found below.
+
+A line can contain only uppercase and lowercase English alphabet characters and spaces; other characters should be ignored. Before rendering, lowercase letters should be converted to uppercase (the available font only contains uppercase characters).
+Each line will have a maximum of 100 characters (including the newline character).
+The program will render the loaded lines onto the input image (top lines at the top and bottom lines at the bottom). The rendering style is up to you, but try to get as close as possible to the example template.
+
+The modified input TGA image should be saved to the disk in TGA format to the output path specified by the command line argument. When saving the output TGA file, use the header from the original input file! This will be much easier than trying to (re)construct the correct header manually.
+
+Rendering Font Characters
+From the values of top and bottom, calculate the positions where each line of text should be located, and then render them onto the loaded TGA image.
+
+Individual TGA images of font characters have a black background (RGB (0, 0, 0)) and white foreground. When copying a character's pixels into the input image, ignore the black background pixels and only copy the pixels that are not black. Otherwise, you would see a distracting black rectangle around each character in the final image.
+
+Assume that the height of each character in the font is 34 pixels, but the width varies for each character. When rendering, you need to consider the width of each character and correctly adjust the horizontal position in the image to avoid overlapping characters.
+
+Notes
+
+The use of Variable-Length Arrays (VLA) is prohibited.
+In the implementation of this task, define your own data types, e.g., for representing a TGA image in memory, to make working with images easier. Also, create a set of functions for manipulating the TGA image to avoid having all the code in the main function.
+You don't need to support grayscale TGA images or TGA images with transparency (RGBA). For this task, assume that all TGA images have a color depth of 24 bits (RGB) and that their coordinate system starts at the top-left corner (i.e., you don't need to handle the 5th bit in the descriptor or the origin values in the header).
+While working with strings or pixels, you will encounter memory errors. Use Address Sanitizer or Valgrind!
+It will be very useful to use the VSCode debugger for this task.
+Even when debugging/stepping through the program, you can redirect input from a file to avoid repeatedly typing the input manually.
+The reference solution is about 190 lines long.

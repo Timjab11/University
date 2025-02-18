@@ -1,0 +1,66 @@
+This week, you will try to write a program that reads a set of stock records. The program will then output information and statistics about the stocks in the form of an HTML page.
+
+The program should behave as follows:
+
+The program will read two command-line parameters: the stock name (string t) and the number of input lines (n). For example:
+
+shell
+Copy
+Edit
+$ ./program AAPL 50
+If both of these parameters are not provided, print the message "Wrong parameters" and exit the program with code 1.
+n will always be a positive number (greater than zero).
+
+The program will then read n lines of input. Each line will contain a record about the stock value of a particular company on a specific day. Each line will consist of five comma-separated values:
+
+Day index (integer)
+Stock name (string containing only uppercase English letters)
+Stock value at the beginning of the day (decimal number)
+Stock value at the end of the day (decimal number)
+Number of trades made that day (integer)
+Example of a record:
+
+Copy
+Edit
+1,NVDA,134.23,135.64,51234158
+Each line will be no longer than 100 characters (including the newline character).
+
+Store the stock name in memory in each record so that it occupies as few bytes as possible, i.e., only as many bytes as the length of the name (plus one byte for the NULL terminator).
+
+Find all the records for stock t among the provided data. Within these records, find the one with the highest number of trades.
+
+If such a record exists, print its available information in HTML format (see example below and tests).
+If such a record doesn't exist, print an HTML message stating that the stock was not found (see tests).
+If there are multiple records with the highest number of trades, print the one that appeared first in the input.
+
+Then, print an HTML table with all the loaded input records, in reverse order from how they were provided. That is, first print the last record, then the second-to-last, and so on. For the records containing information about stock t, print them in bold (enclosed in <b></b> HTML tags).
+
+Example of a printed record:
+
+html
+Copy
+Edit
+<tr>
+    <td>26</td>
+    <td>AMD</td>
+    <td>136.92</td>
+    <td>139.17</td>
+    <td>2.25</td>
+    <td>6_471_118</td>
+</tr>
+Length of the reference solution: ~160 lines (without the bonus)
+
+Output format
+Each row of the table will contain the following data in order:
+
+Day index
+Stock name
+Stock value at the beginning of the day
+Stock value at the end of the day
+The difference between the stock prices at the beginning and at the end of the day
+The number of trades made that day
+Each value should be placed inside a <td> HTML tag, with the tag indented with a tab in the output.
+
+All trade numbers (both for the found record in point 3 and for the table output in point 4) should be printed with an underscore _ between every trio of digits to make them easier to read.
+
+All decimal numbers should be printed with a precision of two decimal places. You can learn how to achieve this by looking up the precision option in the printf function documentation or by Googling it.
